@@ -1,5 +1,6 @@
 package com.yilu.android.app;
 
+import java.io.File;
 import java.util.List;
 
 import com.etsy.android.grid.util.DynamicHeightImageView;
@@ -8,6 +9,8 @@ import com.squareup.picasso.Picasso;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,10 +55,21 @@ public class DataAdapter extends ArrayAdapter<Data> {
 		}
 		
 		final Data data = datas.get(position);
+		Log.d("LZW", "file:" + data.imageUrl);
+//		if(data.imageUrl.equals(Environment.getExternalStorageDirectory().getPath() + File.separator +"com.yilu.andriod.app" + File.separator +"test1.jpg"))
+//		{
+//			 
+//				Picasso.with(this.getContext())
+//				.load(new File (data.imageUrl))
+//				.into(holder.image);
+//		}
+//		else
+//		{
+		Log.d("lzw", "picasso url " + data.imageUrl);
 		Picasso.with(this.getContext())
 				.load(data.imageUrl)
 				.into(holder.image);
-		
+//		}
 		holder.image.setHeightRatio(1.0);
 		holder.title.setText(data.title);
 		holder.description.setText(data.description);
