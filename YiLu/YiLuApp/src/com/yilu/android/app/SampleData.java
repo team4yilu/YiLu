@@ -15,6 +15,7 @@ public class SampleData {
 public static ArrayList<Data> generateSampleData() {
 	final ArrayList<Data> datas = new ArrayList<Data>();
 	String ImgURLList[] = new String[10];
+	// The Urls are outdated, won't load
 	ImgURLList[0] = "http://ac-i6xp9je0.qiniudn.com/SmOigcCtISmz16GtoyxLm4zQ13xgFiPQKVHHhziF.jpg";
 	ImgURLList[1] = "http://ac-i6xp9je0.qiniudn.com/trCgrJ8sMwabACu383MotaCHv35WvWGsDY0PeIfs.jpg";
 	ImgURLList[2] = "http://ac-i6xp9je0.qiniudn.com/iMwuSWLqK5D8A2hJYa1k0s02KatWVm9WCqxKvXj2.jpg";
@@ -37,8 +38,10 @@ public static ArrayList<Data> generateSampleData() {
 	for (int i = 0; i < SAMPLE_DATA_ITEM_COUNT; i++) {
 		Data data = new Data();
 		data.imageUrl = ImgURLList[i];
+		data.aspectRatio = 1.2; // to be implemented on server end
 		data.title = "Imag " + i;
 		data.description = "With Imag on avos Cloud" + i;
+		data.yilucount = 123;
 		datas.add(data);
 	}
 	return datas;

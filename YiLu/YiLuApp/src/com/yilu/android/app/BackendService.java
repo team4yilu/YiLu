@@ -221,9 +221,12 @@ public class BackendService {
 			        	final String fileName = new String(FILE_DIR + tmp.getObjectId());
 			        	AVFile cloudImgFile = tmp.getAVFile("imageFile");
 						Data item = new Data();
+						item.aspectRatio = 1.2; // to be implemented on the server side 
 			    		item.imageUrl = tmp.getString("fileUrl");
 			    		item.title = tmp.getString("caption");
 			    		item.description = "With Imag on avos Cloud";
+			    		item.yilucount = 123 ; 
+			    		// Each of the data has to be filled, otherwise lead to NullPointer error in DataAdapter
 			    		Log.d("LZW", "url = " + item.imageUrl + "; title = " + item.title);
 			    		dataList.add(item);
 //			        	cloudImgFile.getDataInBackground(new GetDataCallback(){

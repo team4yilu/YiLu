@@ -1,40 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/background_card"
-    android:orientation="vertical" >
+    android:orientation="vertical"  >
 
     <com.etsy.android.grid.util.DynamicHeightImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-       />
-
-    <TextView
-        android:id="@+id/title"
+        android:gravity="center" />
+    <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="4dp" 
-        android:paddingTop="4dp" 
-        android:paddingLeft="8dp" 
-        android:paddingRight="8dp" 
-        android:textSize="18sp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#ccc" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="8dp" 
-        android:paddingTop="4dp" 
-        android:paddingLeft="8dp" 
-        android:paddingRight="8dp" />
+    	android:layout_height="wrap_content"
+        android:orientation="horizontal"  >
         
+		<ImageView 
+		    android:id="@+id/avatar"
+		    android:layout_alignParentLeft="true"
+		    android:layout_width="45dp"
+		    android:layout_height="45dp"
+		    android:layout_marginLeft="8dp"
+		    android:layout_marginTop="4dp"
+		    android:layout_marginBottom="4dp" />
+	    	
+		<ImageView
+	        android:id="@+id/yilubutton"	
+	        android:layout_alignParentRight="true"        
+	        android:layout_width="53dp"
+	    	android:layout_height="28dp" 
+	    	android:layout_marginTop="15dp" 
+	    	android:layout_marginRight="8dp" />	
+	    	
+		<TextView
+    	    android:id="@+id/yilucount"
+    	    android:layout_alignParentRight="true"
+	        android:layout_width="40dp"
+	        android:layout_height="16dp"
+	        android:textSize="14sp" 
+	        android:textColor="#d9d9d9"
+	        android:layout_marginTop="19dp"
+	        android:layout_marginRight="8dp" />
+		
+	</RelativeLayout>
+	
+    	
+<!--     <TextView -->
+<!--         android:id="@+id/title" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:paddingBottom="4dp" -->
+<!--         android:paddingTop="4dp" -->
+<!--         android:paddingLeft="8dp" -->
+<!--         android:paddingRight="8dp" -->
+<!--         android:textSize="18sp"/> -->
+    
+    <!-- This is just a bottom buffer -->
+		<TextView  
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content" 
+		  android:textSize="4sp" />  
+     
+<!--     <TextView -->
+<!--         android:id="@+id/description" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:paddingBottom="8dp" -->
+<!--         android:paddingTop="4dp" -->
+<!--         android:paddingLeft="8dp" -->
+<!--         android:paddingRight="8dp"          -->
+<!-- 	    android:textColor="#d9d9d9" /> -->
+
+
 
 </LinearLayout>

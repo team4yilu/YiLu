@@ -1,6 +1,7 @@
 package com.yilu.android.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,6 +35,7 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
 
     private StaggeredGridView mGridView;
     private DataAdapter mAdapter;
+    private BackendService backend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
         testObject.put("foo", "bar");
         testObject.saveInBackground();*/
         
-        BackendService backend = new BackendService(this);
+        backend = new BackendService(this);
         mAdapter = new DataAdapter(this, R.layout.list_item_sample, backend.dataList);
         backend.GetImgList(new ImageListCallBack(){
     		    public void onImageListUpdated() {
@@ -56,6 +58,9 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
     		        Log.d("lzw", "callback setAdapter");
     		    }
         });
+//        mAdapter = new DataAdapter(this, R.layout.list_item_sample, SampleData.generateSampleData());
+        // Sample data didn't work while backend works. I believe the links are outdated
+		
         mGridView = (StaggeredGridView) findViewById(R.id.grid_view);
 
         mGridView.setAdapter(mAdapter);
@@ -81,7 +86,15 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        Toast.makeText(this, "Item Clicked: " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Item Clicked" + position, Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(MainActivity.this, DetailedImage.class);
+		// http://stackoverflow.com/questions/3913592/start-an-activity-with-a-parameter
+		// start new activity with parameters
+		Bundle b = new Bundle();		
+		b.putString("imgUrl", backend.dataList.get(position).imageUrl); // Should pass large image Url. That is, should store both Url on server
+		b.putDouble("aspectRatio", backend.dataList.get(position).aspectRatio);
+		intent.putExtras(b);
+		startActivity(intent);
     }
 }
 

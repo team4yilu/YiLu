@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">已撸</string>
-
+	<string name="title_activity_detailed_image">DetailedImage</string>
+	<string name="action_settings">Settings</string>
 </resources>
