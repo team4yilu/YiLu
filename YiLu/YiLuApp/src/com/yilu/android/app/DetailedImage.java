@@ -50,9 +50,19 @@ public class DetailedImage extends Activity {
 		
 		displayImage.setHeightRatio(aspectRatio);
 		ImageView otherImage = (ImageView) findViewById(R.id.yilubutton1);
+		TextView yilucount = (TextView) findViewById(R.id.yilucount1);
+		yilucount.setText(Integer.toString(123));
 		otherImage.setImageResource(R.drawable.rect);
 		otherImage = (ImageView) findViewById(R.id.avatar1);
 		otherImage.setImageResource(R.drawable.avatar);		
+		
+		// Comments block
+		TextView comments = (TextView) findViewById(R.id.comId1);
+		comments.setText("This is nice !");
+		comments = (TextView) findViewById(R.id.comId2);
+		comments.setText("This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar! This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar! This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar!");
+		comments = (TextView) findViewById(R.id.comId3);
+		comments.setText("路过路过");
 			
 		displayImage.setOnClickListener( new OnClickListener() {
 			// onClick turns out to be much clearer than onTouch
