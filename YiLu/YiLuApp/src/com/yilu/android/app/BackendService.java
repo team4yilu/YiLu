@@ -11,6 +11,8 @@ import java.net.URI;
 import android.util.Log;
 import android.widget.Toast;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 import com.avos.avoscloud.*;
@@ -68,9 +70,29 @@ public class BackendService {
             return super.getCreatedAt().toString();
         }
      
+        private void setUrl(String url)
+        {
+        	put("fileUrl", url);
+        }
+        
         public String getUrl()
         {
-        	return getString("url");
+        	return getString("fileUrl");
+        }
+        
+        private void setHeight(int height)
+        {
+        	put("height", height); 
+        }
+        
+        private void setWidth(int width)
+        {
+        	put("width", width);
+        }
+        
+        private void increaseNbLikes(final int nb)
+        {
+        	put("nbLikes", nb + 1);
         }
         
         public AVFile getRawImage() {
@@ -174,26 +196,45 @@ public class BackendService {
 		});
 	}
 	
-	public void ImgUpload (String txtCaption, URI processedImageUri)
+	public void ImgUpload (final String txtCaption, final URI processedImageUri)
 	{
 		String username = AVUser.getCurrentUser().getUsername();
+		
 		Log.d("lzw", "my"+ username); 
 		long timeInSeconds = (System.currentTimeMillis()/1000);
-	    AVFile remoteFile;
 		try {
-			remoteFile = AVFile.withFile(username + timeInSeconds, new File(processedImageUri.getPath()));
-		    remoteFile.saveInBackground();
-		    Image image = new Image();
-		    image.setPublisher(AVUser.getCurrentUser());
-		    image.setRawImage(remoteFile);
-		    image.setCaption(txtCaption);
-		    image.saveInBackground();
+			final Bitmap bm = BitmapFactory.decodeFile(processedImageUri.getPath());
+			final int height = bm.getHeight();
+			final int width = bm.getWidth();
+			final AVFile remoteFile = AVFile.withFile(username + timeInSeconds, new File(processedImageUri.getPath()));
+		    remoteFile.saveInBackground(new SaveCallback() {
+	            @Override
+	            public void done(AVException e) {
+	                if (e == null) {
+	                    String fileUrl = remoteFile.getUrl();
+	        		    Image image = new Image();
+	        		    image.setPublisher(AVUser.getCurrentUser());
+	        		    image.setRawImage(remoteFile);
+	        		    image.setCaption(txtCaption);
+	        		    image.setUrl(fileUrl);
+	        		    image.setHeight(height);
+	        		    image.setWidth(width);
+	        		    image.saveInBackground();
+	                }
+	                Log.d("AVFile", "file uploading failure with excpetion");
+	            }
+	        });
+//		    Image image = new Image();
+//		    image.setPublisher(AVUser.getCurrentUser());
+//		    image.setRawImage(remoteFile);
+//		    image.setCaption(txtCaption);
+//		    image.saveInBackground();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (IOException IOe) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			IOe.printStackTrace();
 		}
 
 	}
@@ -206,7 +247,7 @@ public class BackendService {
 	    AVQuery<AVObject> query = new AVQuery<AVObject>("Image");
 	    query.setTrace(true);
 	    Log.d("LZW", "class " + query.getClassName());
-	    query.orderByDescending("createAt");
+	    query.orderByDescending("nbLikes");
 	    query.include("publisher");
 	    query.include("rawFile");
 //	    query.include("comments");
@@ -221,11 +262,14 @@ public class BackendService {
 			        	final String fileName = new String(FILE_DIR + tmp.getObjectId());
 			        	AVFile cloudImgFile = tmp.getAVFile("imageFile");
 						Data item = new Data();
-						item.aspectRatio = 1.2; // to be implemented on the server side 
+						int height = tmp.getInt("height");
+						int width = tmp.getInt("width");
+						item.aspectRatio = (double)height/width; // to be implemented on the server side 
+						Log.d("LZW", "height:" + height + ", width:" + width + ", Ratio:" + item.aspectRatio);
 			    		item.imageUrl = tmp.getString("fileUrl");
 			    		item.title = tmp.getString("caption");
 			    		item.description = "With Imag on avos Cloud";
-			    		item.yilucount = 123 ; 
+			    		item.yilucount = tmp.getInt("nbLikes") ; 
 			    		// Each of the data has to be filled, otherwise lead to NullPointer error in DataAdapter
 			    		Log.d("LZW", "url = " + item.imageUrl + "; title = " + item.title);
 			    		dataList.add(item);
@@ -252,7 +296,7 @@ public class BackendService {
 					callback.onImageListUpdated();
 //		    		activity.mGridView.setAdapter(mAdapter);
 		        } else {
-		            Log.d(" ß∞‹", "≤È—Ø¥ÌŒÛ: " + e.getMessage());
+		            Log.e(" ß∞‹", "≤È—Ø¥ÌŒÛ: " + e.getMessage());
 		        }
 		    }
 		});

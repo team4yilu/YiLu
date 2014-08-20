@@ -70,6 +70,7 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
 //    	String mail = new String("test@mail.com");
 //    	String phone = new String("111111111111");
 //    	backend.UserSignUp(userName, pwd, mail, phone);
+////        backend.UserLogIn(userName, pwd);
 //    	
 //    	String fileUri = Environment.getExternalStorageDirectory().getPath() + File.separator +"com.yilu.andriod.app" + File.separator +"test1.jpg";
 //    	URI processedImageUri;
