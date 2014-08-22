@@ -264,7 +264,7 @@ public class BackendService {
 						Data item = new Data();
 						int height = tmp.getInt("height");
 						int width = tmp.getInt("width");
-						item.aspectRatio = (double)height/width; // to be implemented on the server side 
+						item.aspectRatio = (double)height/width; 
 						Log.d("LZW", "height:" + height + ", width:" + width + ", Ratio:" + item.aspectRatio);
 			    		item.imageUrl = tmp.getString("fileUrl");
 			    		item.title = tmp.getString("caption");

@@ -50,7 +50,7 @@ public class DataAdapter extends ArrayAdapter<Data> {
 			holder.yilucount = (TextView) row.findViewById(R.id.yilucount);
 			// holder.title = (TextView)row.findViewById(R.id.title);
 			// holder.description = (TextView)row.findViewById(R.id.description);
-			
+
 			row.setTag(holder);
 		}
 		else {

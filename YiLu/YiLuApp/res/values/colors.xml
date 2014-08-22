@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent_background">#50000000</color> 
     <color name="orange">#ffffdc7e</color>
     <color name="grey">#ffd3d3d3</color>
     <color name="green">#ff8dd304</color>

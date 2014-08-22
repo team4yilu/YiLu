@@ -96,6 +96,7 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
 		b.putDouble("aspectRatio", backend.dataList.get(position).aspectRatio);
 		intent.putExtras(b);
 		startActivity(intent);
+	
     }
 }
 
