@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class DetailedImage extends SwipeBackActivity implements
 		View.OnClickListener {
@@ -35,6 +36,8 @@ public class DetailedImage extends SwipeBackActivity implements
 	RelativeLayout lView;
 	DynamicHeightImageView fulImg;
 	TextView myText;
+	ImageView myImg;
+	boolean liked;
 
 	private static final int VIBRATE_DURATION = 20;
 	private SwipeBackLayout mSwipeBackLayout;
@@ -44,8 +47,9 @@ public class DetailedImage extends SwipeBackActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detailed_image);
+		liked = false;
 
-		// This is the block that calls SwipeBack Library 
+		// This is the part that calls SwipeBack Library 
 		mSwipeBackLayout = getSwipeBackLayout();
 		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_ALL);
 		mSwipeBackLayout.addSwipeListener(new SwipeBackLayout.SwipeListener() {
@@ -78,12 +82,22 @@ public class DetailedImage extends SwipeBackActivity implements
 		// But passes large image Url here for display.
 
 		displayImage.setHeightRatio(aspectRatio);
-		ImageView otherImage = (ImageView) findViewById(R.id.yilubutton1);
+		
+		// The line that contains avatar, heart, share and liked
+		// avatar
+		ImageView avatarImage = (ImageView) findViewById(R.id.avatar1);
+		avatarImage.setImageResource(R.drawable.avatar);
+		// yilu button
+		ImageView bottonImage = (ImageView) findViewById(R.id.yilubutton1);
 		TextView yilucount = (TextView) findViewById(R.id.yilucount1);
 		yilucount.setText(Integer.toString(123));
-		otherImage.setImageResource(R.drawable.rect);
-		otherImage = (ImageView) findViewById(R.id.avatar1);
-		otherImage.setImageResource(R.drawable.avatar);
+		bottonImage.setImageResource(R.drawable.rect);
+		// username
+		TextView nameText = (TextView) findViewById(R.id.name);
+		nameText.setText("小娇焦");
+		// level
+		TextView levelText = (TextView) findViewById(R.id.level);
+		levelText.setText("万人瞩目");
 
 		// Comments block
 		TextView comments = (TextView) findViewById(R.id.comId1);
@@ -121,6 +135,26 @@ public class DetailedImage extends SwipeBackActivity implements
 					isTextShown = false;
 				}
 			}
+		});
+		
+		bottonImage.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(liked == false) {
+					lView = (RelativeLayout) findViewById(R.id.detailViewLLID);
+					myImg = new ImageView(getApplicationContext());
+					myImg.setImageResource(R.drawable.stamp);
+					// http://www.makepic.com/ppic.php?act=b&style=1 stamp from here
+					RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+					params.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.fullimg);
+					params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.fullimg);
+					myImg.setLayoutParams(params);
+					lView.addView(myImg);
+					System.out.println("Yilu clicked");
+					liked = true;
+				}
+			}			
 		});
 	}
 

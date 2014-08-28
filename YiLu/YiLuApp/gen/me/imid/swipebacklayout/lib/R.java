@@ -258,10 +258,10 @@ public final class R {
 		public static final int abc_textfield_searchview_holo_light = 0x7f020054;
 		public static final int abc_textfield_searchview_right_holo_dark = 0x7f020055;
 		public static final int abc_textfield_searchview_right_holo_light = 0x7f020056;
-		public static final int ic_launcher = 0x7f02005c;
-		public static final int shadow_bottom = 0x7f020061;
-		public static final int shadow_left = 0x7f020062;
-		public static final int shadow_right = 0x7f020063;
+		public static final int ic_launcher = 0x7f02005d;
+		public static final int shadow_bottom = 0x7f020062;
+		public static final int shadow_left = 0x7f020063;
+		public static final int shadow_right = 0x7f020064;
 	}
 	public static final class id {
 		public static final int action_bar = 0x7f050020;
@@ -322,7 +322,7 @@ public final class R {
 		public static final int showTitle = 0x7f050006;
 		public static final int split_action_bar = 0x7f050022;
 		public static final int submit_area = 0x7f05003d;
-		public static final int swipe = 0x7f05004f;
+		public static final int swipe = 0x7f050054;
 		public static final int tabMode = 0x7f050002;
 		public static final int title = 0x7f05002f;
 		public static final int top_action_bar = 0x7f050024;
