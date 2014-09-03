@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 import android.content.Context;
@@ -20,9 +21,9 @@ import com.avos.avoscloud.*;
 interface ImageListCallBack { public void onImageListUpdated();}
     
 public class BackendService {
-    public BackendService(MainActivity context){
-    	MainActivity activity = context;
-        AVOSCloud.initialize(context, "i6xp9je0wdny22t0k5m13564nh1cloby9oih6xg29s9tpy96", 
+    public BackendService(FragmentActivity fragmentActivity){
+    	FragmentActivity activity = fragmentActivity;
+        AVOSCloud.initialize(fragmentActivity, "i6xp9je0wdny22t0k5m13564nh1cloby9oih6xg29s9tpy96", 
         		"pbfveozcasgmn37uw4yne2k6892dio4z32g2o8wb6y26lcb9");
 
 	    createDefaultFolder();

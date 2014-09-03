@@ -109,11 +109,9 @@ public class DetailedImage extends SwipeBackActivity implements
 
 		displayImage.setOnClickListener(new OnClickListener() {
 			// onClick turns out to be much clearer than onTouch
-
 			@Override
 			public void onClick(View v) {
-				if (isTextShown == false) { // If the textView doesn't exist
-											// yet, create it in front of image
+				if (isTextShown == false) { // If the textView doesn't exist yet, create it in front of image
 					lView = (RelativeLayout) findViewById(R.id.detailViewLLID);
 					fulImg = (DynamicHeightImageView) findViewById(R.id.fullimg);
 					myText = new TextView(getApplicationContext());
@@ -124,8 +122,7 @@ public class DetailedImage extends SwipeBackActivity implements
 					// set alignment
 					// http://stackoverflow.com/questions/4638832/how-to-programmatically-set-the-layout-align-parent-right-attribute-of-a-button
 					myText.setGravity(Gravity.CENTER);
-					myText.setId(100); // Should have better way... but works
-										// for now
+					myText.setId(100); // Should have better way... but works for now
 					lView.addView(myText);
 					isTextShown = true;
 				} else { // If the textView exists, remove it upon click

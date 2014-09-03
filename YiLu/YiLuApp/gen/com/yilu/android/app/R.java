@@ -1237,7 +1237,7 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050029;
         public static final int all=0x7f05001d;
         public static final int always=0x7f05000b;
-        public static final int avatar=0x7f050051;
+        public static final int avatar=0x7f050053;
         public static final int avatar1=0x7f050043;
         public static final int beginning=0x7f050011;
         public static final int bottom=0x7f05001c;
@@ -1257,13 +1257,13 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f05002a;
         public static final int expanded_menu=0x7f050030;
         public static final int fullimg=0x7f050041;
-        public static final int grid_view=0x7f05004e;
+        public static final int grid_view=0x7f050050;
         public static final int heart=0x7f050049;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002e;
         public static final int iconLineId=0x7f050042;
-        public static final int idbar=0x7f050050;
+        public static final int idbar=0x7f050052;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f05002b;
         public static final int left=0x7f05001a;
@@ -1296,17 +1296,19 @@ containing a value of this type.
         public static final int showTitle=0x7f050006;
         public static final int split_action_bar=0x7f050022;
         public static final int submit_area=0x7f05003d;
-        public static final int swipe=0x7f050054;
+        public static final int swipe=0x7f050056;
         public static final int tabMode=0x7f050002;
         public static final int title=0x7f05002f;
         public static final int top_action_bar=0x7f050024;
-        public static final int txt_title=0x7f05004f;
+        public static final int tvFragSecond=0x7f05004f;
+        public static final int txt_title=0x7f050051;
         public static final int up=0x7f050025;
         public static final int useLogo=0x7f050003;
+        public static final int viewPager=0x7f05004e;
         public static final int withText=0x7f05000c;
-        public static final int yilubutton=0x7f050052;
+        public static final int yilubutton=0x7f050054;
         public static final int yilubutton1=0x7f050046;
-        public static final int yilucount=0x7f050053;
+        public static final int yilucount=0x7f050055;
         public static final int yilucount1=0x7f050047;
     }
     public static final class integer {
@@ -1362,10 +1364,12 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_detailed_image=0x7f030018;
         public static final int activity_main=0x7f030019;
-        public static final int list_item_header_footer=0x7f03001a;
-        public static final int list_item_sample=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
-        public static final int swipeback_layout=0x7f03001d;
+        public static final int frag_second_page=0x7f03001a;
+        public static final int frag_yilu_mainlist=0x7f03001b;
+        public static final int list_item_header_footer=0x7f03001c;
+        public static final int list_item_sample=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int swipeback_layout=0x7f03001f;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
