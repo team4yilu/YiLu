@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class PagerAdapter extends FragmentPagerAdapter {	
-	public PagerAdapter(FragmentManager fm) {
+public class YiluPagerAdapter extends FragmentPagerAdapter {	
+	public YiluPagerAdapter(FragmentManager fm) {
 		super(fm);
 	}
 
