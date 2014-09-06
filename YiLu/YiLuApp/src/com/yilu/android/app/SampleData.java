@@ -54,15 +54,17 @@ public static ArrayList<Data> generateOfflineData() {
 	try {
 		processedImageUri = new URI(Environment.getExternalStorageDirectory().getPath() + File.separator +"com.yilu.andriod.app" + File.separator +"aaa.jpg");
 		ImgURLList[0] = processedImageUri.getPath();
+		processedImageUri = new URI(Environment.getExternalStorageDirectory().getPath() + File.separator +"com.yilu.andriod.app" + File.separator +"bbb.jpg");
+		ImgURLList[1] = processedImageUri.getPath();
+		processedImageUri = new URI(Environment.getExternalStorageDirectory().getPath() + File.separator +"com.yilu.andriod.app" + File.separator +"ccc.jpg");
+		ImgURLList[2] = processedImageUri.getPath();
+		processedImageUri = new URI(Environment.getExternalStorageDirectory().getPath() + File.separator +"com.yilu.andriod.app" + File.separator +"ddd.jpg");
+		ImgURLList[3] = processedImageUri.getPath();
 	} catch (URISyntaxException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
 	
-	System.out.println(ImgURLList[0]);
-	ImgURLList[1] = "http://ac-i6xp9je0.qiniudn.com/trCgrJ8sMwabACu383MotaCHv35WvWGsDY0PeIfs.jpg";
-	ImgURLList[2] = "http://ac-i6xp9je0.qiniudn.com/iMwuSWLqK5D8A2hJYa1k0s02KatWVm9WCqxKvXj2.jpg";
-	ImgURLList[3] = "http://ac-i6xp9je0.qiniudn.com/thUBdENWxuEK8cQBUOBMKTNYSeKy5q2srydqVBz9.jpg";
 	ImgURLList[4] = "http://ac-i6xp9je0.qiniudn.com/mYnCUxqPHzuOGIIIfVmAlU2VEMtOPQK6jAl377yq.jpg";
 	ImgURLList[5] = "http://ac-i6xp9je0.qiniudn.com/uMXqumu4DE88uOXHQy9PLK1YQuqtDLtcF5I3Q3Bt.jpg";
 	ImgURLList[6] = "http://ac-i6xp9je0.qiniudn.com/kuvkkb5ygBg2tNVOrkIkrzSjdbGe7h8uqLWhaUdW.jpg";

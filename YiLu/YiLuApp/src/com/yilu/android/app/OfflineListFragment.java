@@ -21,7 +21,7 @@ public class OfflineListFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ){
 		View v = inflater.inflate(R.layout.frag_yilu_offlinelist, container, false); // inflate this fragment instance
 		mGridView = (StaggeredGridView) v.findViewById(R.id.grid_view_offline); // this grid_view must be a member in the first_frag.xml view. otherwise Null pointer error
-		mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, SampleData.generateOfflineData());
+		mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, SampleData.generateOfflineData(), false);
 		mGridView.setAdapter(mAdapter); // set the StaggeredGridView adapter
 
 		mGridView.setOnItemClickListener(new OnItemClickListener(){// Listen for clicking, and display corresponding image in detailedView

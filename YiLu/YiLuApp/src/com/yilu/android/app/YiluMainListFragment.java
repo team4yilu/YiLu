@@ -29,7 +29,7 @@ public class YiluMainListFragment extends Fragment {
 		mGridView = (StaggeredGridView) v.findViewById(R.id.grid_view); // this grid_view must be a member in the first_frag.xml view. otherwise Null pointer error
 		if(!debug) {
 			backend = new BackendService(getActivity());
-			mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, backend.dataList);
+			mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, backend.dataList, true);
 			backend.GetImgList(new ImageListCallBack(){
 				public void onImageListUpdated() {
 					mGridView.setAdapter(mAdapter);
@@ -37,7 +37,7 @@ public class YiluMainListFragment extends Fragment {
 				}
 			});
 		} else {
-			mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, SampleData.generateSampleData());
+			mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, SampleData.generateSampleData(), true);
 			// "this" won't work here, has to use getActivity()	
 			mGridView.setAdapter(mAdapter); // set the StaggeredGridView adapter
 		}		
