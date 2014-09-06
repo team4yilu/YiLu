@@ -58,8 +58,6 @@ public class DataAdapter extends ArrayAdapter<Data> {
 		}
 
 		final Data data = datas.get(position);
-
-		Log.d("lzw", "picasso url " + data.imageUrl);
 		
 		Picasso.with(this.getContext())
 		.load(data.imageUrl)
