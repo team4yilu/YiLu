@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 
+import android.app.Application; 
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,17 +20,22 @@ import android.os.Environment;
 import com.avos.avoscloud.*;
 
 interface ImageListCallBack { public void onImageListUpdated();}
+interface UserLogInCallback { 
+	public void LogInSuccess();
+	public void LogInFail();
+}
     
 public class BackendService {
-    public BackendService(FragmentActivity fragmentActivity){
-    	FragmentActivity activity = fragmentActivity;
-        AVOSCloud.initialize(fragmentActivity, "i6xp9je0wdny22t0k5m13564nh1cloby9oih6xg29s9tpy96", 
+
+    public BackendService(Application app){
+        AVOSCloud.initialize(app, "i6xp9je0wdny22t0k5m13564nh1cloby9oih6xg29s9tpy96", 
         		"pbfveozcasgmn37uw4yne2k6892dio4z32g2o8wb6y26lcb9");
 
 	    createDefaultFolder();
 	    dataList = new ArrayList<Data>();
 	    Log.v("³õÊ¼»¯", "avos clould init");
 	}
+    private AVUser user;
 
     private ImageListCallBack callback;
 	public ArrayList<Data> dataList;
@@ -156,21 +162,31 @@ public class BackendService {
             return getAVUser("creator");
         }
     }
+    
+    public void userLogOut(){
+    	if(isUserLogIn())
+    		user.logOut();
+    }
 
+    public boolean isUserLogIn(){
+    	user =  user.getCurrentUser();
+    	if(null == user) return false;
+    	else return true;
+    }
     
 //    public List<AVObject> ImgFileLists;
     
-	public void UserLogIn(String userName, String password){
+	public void UserLogIn(String userName, String password, final UserLogInCallback logInCb){
 		AVUser user = new AVUser();
 		user.setUsername(userName);
 		user.setPassword(password);
 		
-		user.logInInBackground(userName, password, new LogInCallback() {
+		user.logInInBackground(userName, password, new LogInCallback<AVUser>() {
 		    public void done(AVUser user, AVException e) {
 		        if (user != null) {
-		            // µÇÂ¼³É¹¦
+		            logInCb.LogInSuccess();
 		        } else {
-		            // µÇÂ¼Ê§°Ü
+		            logInCb.LogInFail();
 		        }
 		    }
 		});

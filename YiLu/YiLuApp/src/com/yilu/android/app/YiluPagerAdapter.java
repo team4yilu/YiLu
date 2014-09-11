@@ -6,12 +6,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class YiluPagerAdapter extends FragmentPagerAdapter {	
-	
+	private Activity activity;
 	private final String[] TITLES = { "最新", "最热", "群", "离线", "我", "Top New Paid",
 			"Top New Free", "Trending" };
 	
-	public YiluPagerAdapter(FragmentManager fm) {
+	public YiluPagerAdapter(FragmentManager fm, Activity a) {
 		super(fm);
+		activity = a;
 	}
 	
 	@Override
@@ -27,8 +28,13 @@ public class YiluPagerAdapter extends FragmentPagerAdapter {
 			//case 1: return SecondFragment.newInstance("This is placeholder for another sorting option");
 			case 2: return SecondFragment.newInstance("This is placeholder for chat groups");
 			case 3: return OfflineListFragment.newInstance("This is placeholder for offline pics");
-			case 4: return SecondFragment.newInstance("This is placeholder for me page");
-			default: return SecondFragment.newInstance("This is placeholder for me page"); 
+			case 4: {
+				if(((YiLuApp)activity.getApplication()).backend.isUserLogIn())
+					return MePage.newInstance("This is placeholder for me page");
+				else
+					return LogInFragment.newInstance("This is placeholder for LogIn page");
+			}
+			default: return MePage.newInstance("This is placeholder for me page"); 
 			// Keep adding instances if needed
 		}
 	}

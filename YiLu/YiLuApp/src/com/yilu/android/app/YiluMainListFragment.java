@@ -1,5 +1,6 @@
 package com.yilu.android.app;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,24 +12,26 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
+
 import com.etsy.android.grid.StaggeredGridView;
 import com.yilu.android.app.R;
 
+import android.app.Application;
 import com.yilu.android.app.BackendService;
 
 public class YiluMainListFragment extends Fragment {	
 
 	private boolean debug = false;
-	private BackendService backend;	
 	private DataAdapter mAdapter;
 	private StaggeredGridView mGridView;
-
+    private BackendService backend;
+    
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ){
 		View v = inflater.inflate(R.layout.frag_yilu_mainlist, container, false); // inflate this fragment instance
 		mGridView = (StaggeredGridView) v.findViewById(R.id.grid_view); // this grid_view must be a member in the first_frag.xml view. otherwise Null pointer error
 		if(!debug) {
-			backend = new BackendService(getActivity());
+			backend = ((YiLuApp)(getActivity().getApplication())).backend;
 			mAdapter = new DataAdapter(getActivity(), R.layout.list_item_sample, backend.dataList, true);
 			backend.GetImgList(new ImageListCallBack(){
 				public void onImageListUpdated() {
@@ -41,7 +44,6 @@ public class YiluMainListFragment extends Fragment {
 			// "this" won't work here, has to use getActivity()	
 			mGridView.setAdapter(mAdapter); // set the StaggeredGridView adapter
 		}		
-
 		mGridView.setOnItemClickListener(new OnItemClickListener(){// Listen for clicking, and display corresponding image in detailedView
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,

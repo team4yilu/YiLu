@@ -14,7 +14,7 @@ public class MainActivity extends FragmentActivity {// the main activity is Frag
         setContentView(R.layout.activity_main); // load in main activity, which is placeholder for a ViewPager
         
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
-        pager.setAdapter(new YiluPagerAdapter(getSupportFragmentManager())); //setting the ViewPager
+        pager.setAdapter(new YiluPagerAdapter(getSupportFragmentManager(), this)); //setting the ViewPager
     
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(pager); // To avoid NullPointer error, getPageTitle() has to be set in PagerAdapter.java
