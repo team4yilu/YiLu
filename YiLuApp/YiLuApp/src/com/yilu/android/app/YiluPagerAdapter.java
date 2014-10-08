@@ -12,10 +12,9 @@ public class YiluPagerAdapter extends FragmentPagerAdapter implements IconPagerA
 	private Activity activity;
 	
 	private static final int[] ICONS = new int[] {
-        R.drawable.perm_group_calendar,
-        R.drawable.perm_group_camera,
-        R.drawable.perm_group_device_alarms,
-        R.drawable.perm_group_location,
+        R.drawable.perm_group_group,
+        R.drawable.perm_group_yilu,
+        R.drawable.perm_group_me,
 	};	
 	
 	public YiluPagerAdapter(FragmentManager fm, Activity activity) {

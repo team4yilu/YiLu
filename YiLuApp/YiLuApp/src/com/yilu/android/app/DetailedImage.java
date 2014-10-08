@@ -13,6 +13,7 @@ import android.content.Context;
 import android.database.DataSetObservable;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.v4.widget.DrawerLayout;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
@@ -51,7 +53,7 @@ public class DetailedImage extends SwipeBackActivity implements
 
 		// This is the part that calls SwipeBack Library 
 		mSwipeBackLayout = getSwipeBackLayout();
-		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_ALL);
+		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_RIGHT);
 		mSwipeBackLayout.addSwipeListener(new SwipeBackLayout.SwipeListener() {
 			@Override
 			public void onScrollStateChange(int state, float scrollPercent) {
@@ -65,6 +67,17 @@ public class DetailedImage extends SwipeBackActivity implements
 				vibrate(VIBRATE_DURATION);
 			}
 		});
+		
+		// This is the part for side bar to display comments
+		SidebarAdapter mAdapter = new SidebarAdapter(this);
+	     final DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+	     final ListView navList = (ListView) findViewById(R.id.drawer);
+	     
+	     for (int i = 1; i < 15; i++) {
+	         mAdapter.addItem("item " + i);         
+	     }
+	     mAdapter.addCommentItem("dummy");
+	     navList.setAdapter(mAdapter);
 		
 		// Gets input from the calling activity
 		Bundle b = getIntent().getExtras();
@@ -99,13 +112,13 @@ public class DetailedImage extends SwipeBackActivity implements
 		TextView levelText = (TextView) findViewById(R.id.level);
 		levelText.setText("万人瞩目");
 
-		// Comments block
-		TextView comments = (TextView) findViewById(R.id.comId1);
-		comments.setText("This is nice !");
-		comments = (TextView) findViewById(R.id.comId2);
-		comments.setText("This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar! This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar! This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar!");
-		comments = (TextView) findViewById(R.id.comId3);
-		comments.setText("路过路过");
+//		// Comments block
+//		TextView comments = (TextView) findViewById(R.id.comId1);
+//		comments.setText("This is nice !");
+//		comments = (TextView) findViewById(R.id.comId2);
+//		comments.setText("This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar! This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar! This is nice, I cannot help to leave great comments ! Please keep posting nice pictures of yours! I'm a big fan of every single photo you post. You are a rockStar!");
+//		comments = (TextView) findViewById(R.id.comId3);
+//		comments.setText("路过路过");
 
 		displayImage.setOnClickListener(new OnClickListener() {
 			// onClick turns out to be much clearer than onTouch
@@ -162,7 +175,7 @@ public class DetailedImage extends SwipeBackActivity implements
 	}
 
 	private void restoreTrackingMode() {
-		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_ALL);
+		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_RIGHT);
 	}
 
 	private void vibrate(long duration) {
