@@ -141,13 +141,13 @@ public class MeFragment extends Fragment {
 		Bitmap resizeBmp;
 		Matrix matrix = new Matrix();
 		matrix.postScale(1,1);
-		if(raw_height > 800 && raw_height > raw_width){
-			matrix.postScale((float)raw_height/800,(float)raw_height/800);
+		if(raw_height > 800 && raw_height > raw_width){ 
+			matrix.postScale((float)800/raw_height,(float)800/raw_height);
 			resizeBmp = Bitmap.createBitmap(bm,0,0,bm.getWidth(),bm.getHeight(),matrix,true);
 			Log.d("lzw", "resize bm£ºH: " + resizeBmp.getHeight() + ", W:" + resizeBmp.getWidth());		
 		}
 		else if(raw_width > 800 && raw_height < raw_width){
-			matrix.postScale((float)raw_width/800,(float)raw_width/800);
+			matrix.postScale((float)800/raw_width,(float)800/raw_width);
 			resizeBmp = Bitmap.createBitmap(bm,0,0,bm.getWidth(),bm.getHeight(),matrix,true);
 			Log.d("lzw", "resize bm£ºH: " + resizeBmp.getHeight() + ", W:" + resizeBmp.getWidth());		
 		}
