@@ -314,14 +314,14 @@ public final class R {
 		public static final int abc_textfield_searchview_holo_light = 0x7f020054;
 		public static final int abc_textfield_searchview_right_holo_dark = 0x7f020055;
 		public static final int abc_textfield_searchview_right_holo_light = 0x7f020056;
-		public static final int ic_launcher = 0x7f02005e;
-		public static final int vpi__tab_indicator = 0x7f020076;
-		public static final int vpi__tab_selected_focused_holo = 0x7f020077;
-		public static final int vpi__tab_selected_holo = 0x7f020078;
-		public static final int vpi__tab_selected_pressed_holo = 0x7f020079;
-		public static final int vpi__tab_unselected_focused_holo = 0x7f02007a;
-		public static final int vpi__tab_unselected_holo = 0x7f02007b;
-		public static final int vpi__tab_unselected_pressed_holo = 0x7f02007c;
+		public static final int ic_launcher = 0x7f020060;
+		public static final int vpi__tab_indicator = 0x7f020078;
+		public static final int vpi__tab_selected_focused_holo = 0x7f020079;
+		public static final int vpi__tab_selected_holo = 0x7f02007a;
+		public static final int vpi__tab_selected_pressed_holo = 0x7f02007b;
+		public static final int vpi__tab_unselected_focused_holo = 0x7f02007c;
+		public static final int vpi__tab_unselected_holo = 0x7f02007d;
+		public static final int vpi__tab_unselected_pressed_holo = 0x7f02007e;
 	}
 	public static final class id {
 		public static final int action_bar = 0x7f050030;
@@ -335,7 +335,7 @@ public final class R {
 		public static final int action_menu_divider = 0x7f050016;
 		public static final int action_menu_presenter = 0x7f050017;
 		public static final int action_mode_close_button = 0x7f050038;
-		public static final int action_settings = 0x7f050073;
+		public static final int action_settings = 0x7f050075;
 		public static final int activity_chooser_view_content = 0x7f050039;
 		public static final int always = 0x7f05000b;
 		public static final int beginning = 0x7f050011;

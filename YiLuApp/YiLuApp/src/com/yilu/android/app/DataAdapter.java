@@ -67,6 +67,7 @@ public class DataAdapter extends ArrayAdapter<Data> {
 		if(online) {
 			Picasso.with(this.getContext())
 			.load(data.imageUrl)
+			.resize(200, 300)
 			.into(holder.image);	// the execution of picasso is not in sequential with the rest of code. So trying to read img dimens using Target() then set imgView will never work		
 		} 
 		else {

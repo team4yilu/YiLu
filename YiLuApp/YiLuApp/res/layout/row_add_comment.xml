@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_comment_layout"
+    android:layout_height="wrap_content"
+    android:layout_width="240dp"
+    android:orientation="horizontal"
+    android:background="#f2f2f2" >
+    
     <EditText
-       android:id="@+id/text_add_comment"
-       android:layout_width="100dp"
-       android:layout_height="40dp"                
-       android:layout_marginLeft="10dp"
-       android:layout_marginTop="12dp"
-       android:textColor="#828282"
-       android:textSize="22sp" 
-       android:hint="Say something ......"/>
+        android:id="@+id/add_comment"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"   
+		android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
+        android:textSize="20sp"
+        android:hint="亲，来吧^-^" 
+        android:inputType="textMultiLine"/>
     <Button
 		android:id="@+id/button"
-		android:layout_width="80dp"
-		android:layout_height="60dp"
+		android:layout_width="50dp"
+		android:layout_height="match_parent"
+		android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+		android:background="#ffffff"
 		android:text="Post" />
 
 </LinearLayout>

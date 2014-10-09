@@ -223,6 +223,8 @@ public class BackendService {
 			final Bitmap bm = BitmapFactory.decodeFile(processedImageUri.getPath());
 			final int height = bm.getHeight();
 			final int width = bm.getWidth();
+			System.out.println("size: "+height + "  "+ width + "  " + height*width*4.0/1000.0);
+			bm.recycle();
 			final AVFile remoteFile = AVFile.withFile(username + timeInSeconds, new File(processedImageUri.getPath()));
 		    remoteFile.saveInBackground(new SaveCallback() {
 	            @Override
@@ -276,8 +278,8 @@ public class BackendService {
 		        if (e == null) {
 		            Log.d("成功", "查询到" + avObjects.size() + " 条符合条件的数据");
 					for (AVObject tmp : avObjects) {
-			        	final String fileName = new String(FILE_DIR + tmp.getObjectId());
-			        	AVFile cloudImgFile = tmp.getAVFile("imageFile");
+			        	// final String fileName = new String(FILE_DIR + tmp.getObjectId());
+			        	// AVFile cloudImgFile = tmp.getAVFile("imageFile");
 						Data item = new Data();
 						int height = tmp.getInt("height");
 						int width = tmp.getInt("width");

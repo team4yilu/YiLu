@@ -9,15 +9,14 @@
                     android:layout_height="40dp"                
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
-                    android:background="@drawable/ic_launcher"/>
+                    android:background="@drawable/avatar1"/>
     <TextView
                     android:id="@+id/text_comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"                
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"                
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:textColor="#828282"
-                    android:textSize="24sp" 
-                    android:background="#f2f2f2"/>
+                    android:textSize="24sp" />
 
 </LinearLayout>
