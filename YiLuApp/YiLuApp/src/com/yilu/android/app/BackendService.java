@@ -6,8 +6,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
 
+import android.app.Activity;
 import android.app.Application; 
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 
 import com.avos.avoscloud.*;
 
@@ -213,48 +216,43 @@ public class BackendService {
 		});
 	}
 	
-	public void ImgUpload (final String txtCaption, final URI processedImageUri)
+	public void ImgUpload (final String txtCaption, final String url) 
+			throws FileNotFoundException, IOException
 	{
+		Log.d("lzw", "ImgUpload");
 		String username = AVUser.getCurrentUser().getUsername();
 		
-		Log.d("lzw", "my"+ username); 
+		Log.d("lzw", "Username："+ username); 
+
 		long timeInSeconds = (System.currentTimeMillis()/1000);
-		try {
-			final Bitmap bm = BitmapFactory.decodeFile(processedImageUri.getPath());
-			final int height = bm.getHeight();
-			final int width = bm.getWidth();
-			System.out.println("size: "+height + "  "+ width + "  " + height*width*4.0/1000.0);
-			bm.recycle();
-			final AVFile remoteFile = AVFile.withFile(username + timeInSeconds, new File(processedImageUri.getPath()));
-		    remoteFile.saveInBackground(new SaveCallback() {
-	            @Override
-	            public void done(AVException e) {
-	                if (e == null) {
-	                    String fileUrl = remoteFile.getUrl();
-	        		    Image image = new Image();
-	        		    image.setPublisher(AVUser.getCurrentUser());
-	        		    image.setRawImage(remoteFile);
-	        		    image.setCaption(txtCaption);
-	        		    image.setUrl(fileUrl);
-	        		    image.setHeight(height);
-	        		    image.setWidth(width);
-	        		    image.saveInBackground();
-	                }
-	                Log.d("AVFile", "file uploading failure with excpetion");
-	            }
-	        });
+
+		final Bitmap bm = BitmapFactory.decodeFile(url);
+		final int height = bm.getHeight();
+		final int width = bm.getWidth();
+		File imageFile = new File(url);
+		final AVFile remoteFile = AVFile.withFile(username + timeInSeconds, imageFile);
+		remoteFile.saveInBackground(new SaveCallback() {
+	           @Override
+	    	public void done(AVException e) {
+		    	if (e == null) {
+			    	String fileUrl = remoteFile.getUrl();
+				    Image image = new Image();
+				    image.setPublisher(AVUser.getCurrentUser());
+				    image.setRawImage(remoteFile);
+				    image.setCaption(txtCaption);
+				    image.setUrl(fileUrl);
+				    image.setHeight(height);
+				    image.setWidth(width);
+				    image.saveInBackground();
+		    	}
+		    	Log.d("AVFile", "file uploading failure with excpetion");
+	        }
+        });
 //		    Image image = new Image();
 //		    image.setPublisher(AVUser.getCurrentUser());
 //		    image.setRawImage(remoteFile);
 //		    image.setCaption(txtCaption);
 //		    image.saveInBackground();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException IOe) {
-			// TODO Auto-generated catch block
-			IOe.printStackTrace();
-		}
 
 	}
 	
@@ -277,6 +275,7 @@ public class BackendService {
 		    public void done(List<AVObject> avObjects, AVException e) {
 		        if (e == null) {
 		            Log.d("成功", "查询到" + avObjects.size() + " 条符合条件的数据");
+		            dataList.clear();
 					for (AVObject tmp : avObjects) {
 			        	// final String fileName = new String(FILE_DIR + tmp.getObjectId());
 			        	// AVFile cloudImgFile = tmp.getAVFile("imageFile");
